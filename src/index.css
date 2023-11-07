@@ -1,0 +1,239 @@
+:root {
+  font-size: 16px;
+  
+  --navbar-size-active: 12rem;
+  --navbar-size-inactive: 3.5rem;
+
+  --btn-size: 3rem;
+  --btn-icon-size: 1.5rem;
+
+  --btn-margin: calc( ( var(--navbar-size-inactive) - var(--btn-size) ) / 2 );
+  --btn-icon-margin: calc( ( var(--btn-size) - var(--btn-icon-size) ) / 2);
+
+  --tsn-time: 0.3s;
+
+  --clr-dark-primary: #141e12;
+  --clr-dark-secondary: #2F4700;
+  --clr-dark-tertiary: #29390A;
+  --clr-light-primary: #DEDEDF;
+  --clr-light-secondary: #FFF9E8;
+  --clr-medium-primary: #BAED70;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--clr-dark-primary);
+  background-color: var(--clr-light-primary);
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1f241e;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #35bd17;
+}
+
+/* STRUCTURE nav .navbar   */
+/* .navbar                 */
+/*     .navbar-top         */
+/*     .navbar-nav         */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: var(--navbar-size-inactive);
+  height: 100%;
+  position: fixed;
+  color: var(--clr-light-primary);
+  background-color: var(--clr-dark-primary);
+  transition: all var(--tsn-time) ease;
+  /* border: 0.1rem solid red; */
+}
+
+.navbar.active {
+  width: var(--navbar-size-active);
+}
+
+/* END OF STRUCTURE nav .navbar */
+
+/* STRUCTURE section .navbar-top */
+/* .navbar-top                   */
+/*     .logo                     */
+/*         #logo-img             */
+/*         #logo-text            */
+/*     .menu-btn-container       */
+/*         #menu-btn             */
+
+
+.navbar-top {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 100%;
+  height: var(--navbar-size-inactive);
+  /* border: 0.1rem solid purple; */
+}
+
+.logo {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin: var(--btn-icon-margin);
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--tsn-time) ease;
+}
+
+.navbar.active .logo {
+  opacity: 1;
+}
+
+#logo-img {
+  font-size: var(--btn-icon-size);
+  margin-right: var(--btn-icon-margin);
+}
+
+#logo-text {
+  font-size: calc(0.8 * var(--btn-icon-size));
+}
+
+.menu-btn-container {
+  display: flex;
+  align-items: center;
+
+  width: var(--btn-size);
+  height: var(--btn-size);
+  margin: 0 var(--btn-margin);
+
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  border-radius: 0.5rem;
+}
+
+#menu-btn {
+  display: block;
+  font-size: var(--btn-icon-size);
+  width: var(--btn-icon-size);
+  margin: 0 var(--btn-icon-margin);
+  transition: all var(--tsn-time) ease;
+}
+
+
+
+/* END OF STRUCTURE section .navbar-top */
+
+
+/* STRUCTURE ul .navbar-nav */
+/* .navbar-nav              */
+/*     .nav-item            */
+/*         .nav-link        */
+/*             .link-icon   */
+/*             .link-text   */
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;    /* Might be bad */
+
+  /* border: 0.1rem solid purple; */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+
+  height: var(--navbar-size-inactive);
+  width: 100%;
+  /* border: 0.1rem solid red; */
+}
+
+.nav-item.active {
+  background-color: rgba(186, 237, 112, 0.1);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+
+  width: var(--btn-size);
+  height: var(--btn-size);
+  margin: 0 var(--btn-margin);
+
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  /* border: 0.1rem solid blue; */
+}
+
+.nav-link:hover {
+  background-color: var(--clr-light-primary);
+  color: var(--clr-dark-primary);
+}
+
+
+.navbar.active .nav-link {
+  width: calc( var(--navbar-size-active) - ( var(--btn-margin) ) );
+}
+
+.link-icon {
+  display: block;
+  font-size: var(--btn-icon-size);
+  width: var(--btn-icon-size);
+  margin: 0 var(--btn-icon-margin);
+  transition: all calc(var(--tsn-time)/2) ease;
+
+  /* border: 0.1rem solid white; */
+}
+
+.link-text {
+  visibility: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: all calc(var(--tsn-time)/2) ease;
+
+}
+
+.navbar.active .link-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* END OF STRUCTURE ul .navbar-nav */
+
+
+main {
+  margin-left: var(--navbar-size-inactive);
+}
+
+
+.btn {
+  cursor: pointer;
+}
